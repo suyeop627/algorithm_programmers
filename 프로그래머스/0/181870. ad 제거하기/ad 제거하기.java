@@ -1,11 +1,11 @@
 class Solution {
     public String[] solution(String[] strArr) {
-        String strDividedComma = "";
+        StringBuffer sb = new StringBuffer();
         for(String str : strArr){
             if(!str.contains("ad")){
-                strDividedComma+=str+",";
+                sb.append(str+",");
             }
         }
-        return strDividedComma.split(",");
+        return sb.toString().split(",");
     }
 }
