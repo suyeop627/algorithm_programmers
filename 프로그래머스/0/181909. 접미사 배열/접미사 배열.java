@@ -5,10 +5,11 @@ class Solution {
     public String[] solution(String my_string) {
         String[] answer = {};
         List<String> list = new ArrayList<>();
-        String  suffix = "";
+        StringBuffer suffix = new StringBuffer();
         for(int i = my_string.length()-1; i>=0; i--){
-            suffix =my_string.charAt(i)+suffix;
-            list.add(suffix);
+            suffix.insert(0,my_string.charAt(i));
+            
+            list.add(suffix.toString());
         }
         Collections.sort(list);
         return list.toArray(String[]::new);
