@@ -4,7 +4,7 @@ class Solution {
         return dfs(k, dungeons, visited, 0);
     }
 
-    private static int dfs(int k, int[][] dungeons, boolean[] visited, int count) {
+    private int dfs(int k, int[][] dungeons, boolean[] visited, int count) {
         int maxCount = count;
 
         for (int i = 0; i < dungeons.length; i++) {
