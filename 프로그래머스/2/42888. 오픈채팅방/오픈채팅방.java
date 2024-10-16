@@ -7,17 +7,19 @@ class Solution {
 
     public String[] solution(String[] record) {
         
-        String[][] seperatedRecords = Arrays.stream(record)
-                                            .map(s->s.split(" "))
-                                            .toArray(String[][]::new);
+        String[][] separatedRecords = new String[record.length][];
         
-        for(String[] seperatedRecord : seperatedRecords){
-            if(seperatedRecord[0].charAt(0) != 'L'){
-                userMap.put(seperatedRecord[1], seperatedRecord[2]);
+        for (int i = 0; i < record.length; i++) {
+            separatedRecords[i] = record[i].split(" ");
+        }
+        
+        for(String[] separatedRecord : separatedRecords){
+            if(separatedRecord[0].charAt(0) != 'L'){
+                userMap.put(separatedRecord[1], separatedRecord[2]);
             }
         }
         
-        return Arrays.stream(seperatedRecords)
+        return Arrays.stream(separatedRecords)
             .filter(r->!r[0].startsWith("C"))
             .map(this::convertLog)
             .toArray(String[]::new);
