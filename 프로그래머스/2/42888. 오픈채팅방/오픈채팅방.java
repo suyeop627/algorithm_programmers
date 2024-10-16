@@ -30,9 +30,9 @@ class Solution {
         
         switch(engLog[0].charAt(0)){
             case 'E' :
-                return userMap.get(engLog[1])+"님이 들어왔습니다.";
+                return userName+"님이 들어왔습니다.";
             case 'L' :
-                return userMap.get(engLog[1])+"님이 나갔습니다.";
+                return userName+"님이 나갔습니다.";
             default :
                 return "";
         }
