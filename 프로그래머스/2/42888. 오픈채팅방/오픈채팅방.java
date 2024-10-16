@@ -7,19 +7,20 @@ class Solution {
 
     public String[] solution(String[] record) {
         
-        String[][] separatedRecords = new String[record.length][];
-        
-        for (int i = 0; i < record.length; i++) {
-            separatedRecords[i] = record[i].split(" ");
-        }
-        
-        for(String[] separatedRecord : separatedRecords){
-            if(separatedRecord[0].charAt(0) != 'L'){
-                userMap.put(separatedRecord[1], separatedRecord[2]);
+        for(String r : record){
+            String[] separatedRecord = r.split(" ");
+            
+            String action = separatedRecord[0];
+            String userId = separatedRecord[1];
+            
+            if(!action.equals("Leave")){
+                String userName = separatedRecord[2];
+                userMap.put(userId, userName);
             }
         }
         
-        return Arrays.stream(separatedRecords)
+        return Arrays.stream(record)
+            .map(r->r.split(" "))
             .filter(r->!r[0].startsWith("C"))
             .map(this::convertLog)
             .toArray(String[]::new);
