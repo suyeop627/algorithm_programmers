@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.Comparator;
+
 class Solution {
     public int[] solution(int[] num_list) {
         int[] answer = new int[num_list.length];
