@@ -16,6 +16,9 @@ class Solution {
                 reachedCount[i]++;
             }
         }
+        printArray("reachedCount", reachedCount);
+        printArray("notClearedCount", notClearedCount);
+        
         
         List<Stage> stageList = new ArrayList<>();
         
@@ -34,6 +37,13 @@ class Solution {
             .mapToInt(Stage::getStageNo)
             .toArray();
     }
+    private void printArray(String varName, int[] arr){
+        System.out.println(varName);
+        for(int i =0; i<arr.length; i++){
+            System.out.printf("Stage %d : %d \n", i, arr[i]);
+        }
+        System.out.println("=======================");
+    }
 }
 
 class Stage {
@@ -51,8 +61,5 @@ class Stage {
 
     public double getFailRatio() {
         return failRatio;
-    }
-    
-    
-    
+    }    
 }
