@@ -1,6 +1,6 @@
 # [level 2] 예상 대진표 - 12985 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12985) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12985?language=java) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 11월 04일 21:58:24
+2024년 11월 08일 12:40:22
 
 ### 문제 설명
 
