@@ -12,9 +12,7 @@ class Solution {
                 if (headCompare != 0) {
                     return headCompare;
                 }
-                //number 비교(같은 경우, part1이 더 앞으로 오도록 등호조건 설정)
-                //return part1.number < part2.number ? -1 : 1;
-                 return Integer.compare(part1.number, part2.number);
+                return part1.number < part2.number ? -1 : part1.number == part2.number ? 0 : 1;
             })
             .toArray(String[]::new);
     }
