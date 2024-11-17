@@ -12,7 +12,7 @@ class Solution {
                 if (headCompare != 0) {
                     return headCompare;
                 }
-                return part1.number < part2.number ? -1 : part1.number == part2.number ? 0 : 1;
+                return part1.number > part2.number ? 1 : part1.number == part2.number ? 0 : -1;
             })
             .toArray(String[]::new);
     }
