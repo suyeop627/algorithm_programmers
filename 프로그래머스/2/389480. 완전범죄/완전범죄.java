@@ -1,8 +1,9 @@
 import java.util.Arrays;
 import java.util.Set;
 import java.util.HashSet;
+
 class Solution {
-    private int minATrace = Integer.MAX_VALUE;
+    private int minATrace = 120;
     
     private Set<String> visited = new HashSet<>();
     
@@ -12,20 +13,20 @@ class Solution {
         
         steal(info, n, m, 0, 0, 0);
         
-        return minATrace == Integer.MAX_VALUE ? -1 : minATrace;
+        return minATrace == 120 ? -1 : minATrace;
     }
     
-    private void steal(int[][] info, int n, int m, int sumOfA, int sumOfB , int index){
+    private void steal(int[][] info, int n, int m, int sumOfATrace, int sumOfBTrace , int index){
         //둘중 하나 이상 걸림
-        if(sumOfA >= n || sumOfB >= m){
+        if(sumOfATrace >= n || sumOfBTrace >= m){
             return;
         }
         //이미 최소 흔적을 넘긴 경우 종료(시간초과 개선)
-        if(sumOfA >= minATrace){
+        if(sumOfATrace >= minATrace){
             return;
         }
         //index-A흔적합-B흔적합 중간 결과값 저장(시간초과 개선)
-        String partialResult = String.format("%d|%d|%d", index,sumOfA, sumOfB);
+        String partialResult = String.format("%d|%d|%d", index,sumOfATrace, sumOfBTrace);
         if(visited.contains(partialResult)){
             return;
         }
@@ -33,16 +34,15 @@ class Solution {
         
         //전부 훔치면 종료
         if(index == info.length){
-            minATrace = Math.min(sumOfA, minATrace);
+            minATrace = Math.min(sumOfATrace, minATrace);
             return;
         }
         
-        
+        int nextIndex = index+1;
         //A 훔침
-        steal(info, n, m, sumOfA+info[index][0], sumOfB, index+1);
+        steal(info, n, m, sumOfATrace+info[index][0], sumOfBTrace, nextIndex);
         
         //B 훔침
-        steal(info, n, m, sumOfA, sumOfB+info[index][1], index+1);
-        
+        steal(info, n, m, sumOfATrace, sumOfBTrace+info[index][1], nextIndex);
     }
 }
