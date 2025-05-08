@@ -5,7 +5,7 @@ import java.util.HashSet;
 class Solution {
     private int minATrace = 120;
     
-    private Set<String> visited = new HashSet<>();
+    private Set<String> stealState = new HashSet<>();
     
     public int solution(int[][] info, int n, int m) {
         //큰거부터 훔치도록(시간초과 개선)
@@ -26,11 +26,11 @@ class Solution {
             return;
         }
         //index-A흔적합-B흔적합 중간 결과값 저장(시간초과 개선)
-        String partialResult = String.format("%d|%d|%d", index,sumOfATrace, sumOfBTrace);
-        if(visited.contains(partialResult)){
+        String currentState = String.format("%d|%d|%d", index,sumOfATrace, sumOfBTrace);
+        if(stealState.contains(currentState)){
             return;
         }
-        visited.add(partialResult);
+        stealState.add(currentState);
         
         //전부 훔치면 종료
         if(index == info.length){
