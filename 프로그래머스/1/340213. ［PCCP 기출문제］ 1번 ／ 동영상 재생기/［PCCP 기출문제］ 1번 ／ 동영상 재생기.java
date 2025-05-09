@@ -5,7 +5,7 @@ class Solution {
         Video video = new Video(video_len, pos, op_start, op_end);
         Player player = new Player(video);
         
-        Arrays.stream(commands).forEach(c->player.insertCommand(c));
+        Arrays.stream(commands).forEach(player::insertCommand);
         
         return video.getFormattedPosition();
     }
