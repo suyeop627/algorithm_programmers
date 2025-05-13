@@ -11,8 +11,8 @@ class Solution {
                 serverQueue.remove();
             }
 
-            if (players[currentTime] > serverQueue.size() * capacity) {
-                while (isScaleOutNeeded(serverQueue, capacity, players[currentTime])) {
+            if (isScaleOutNeeded(serverQueue, capacity, players[currentTime])) {
+                while (!hasEnoughServers(serverQueue, capacity, players[currentTime])) {
                     serverQueue.add(currentTime + duration);
                     answer++;
                 }
@@ -21,11 +21,15 @@ class Solution {
         return answer;
     }
 
+    private boolean hasExpiredServer(Queue<Integer> serverQueue, int currentTime) {
+        return !serverQueue.isEmpty() && serverQueue.peek() <= currentTime;
+    }
+
     private boolean isScaleOutNeeded(Queue<Integer> serverQueue, int capacity, int players) {
         return players >= (serverQueue.size() + 1) * capacity;
     }
 
-    private boolean hasExpiredServer(Queue<Integer> serverQueue, int currentTime) {
-        return !serverQueue.isEmpty() && serverQueue.peek() <= currentTime;
+    private boolean hasEnoughServers(Queue<Integer> serverQueue, int capacity, int players) {
+        return players < (serverQueue.size() + 1) * capacity;
     }
 }
