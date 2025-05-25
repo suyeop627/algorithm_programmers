@@ -52,7 +52,7 @@ public class Solution {
                     Location curLocation = queue.poll();
                     //#외 이어진 현재 .의 값을 #로 변경
                     warehouse[curLocation.x][curLocation.y] = '#';
-                    newlyConnectedToOutside.add(location);
+                    newlyConnectedToOutside.add(curLocation);
                     for (int i = 0; i < 4; i++) {
                         int nx = curLocation.x + dx[i];
                         int ny = curLocation.y + dy[i];
@@ -128,6 +128,11 @@ public class Solution {
             }
             Location location = (Location) o;
             return x == location.x && y == location.y;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
         }
     }
 }
