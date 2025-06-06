@@ -21,6 +21,7 @@ class Solution {
 
     private void findCandidates(int range, int start, int index, 
                                 int[] current, int[] q, int ans) {
+        //System.out.println(Arrays.toString(current));
         if (index == 5 ){
             if(countCommon(current, q) == ans)
                 codeCandidates.add(Arrays.copyOf(current, 5));
