@@ -30,7 +30,7 @@ class Solution {
             }else {
                 clearTime += (diffs[i] - level) * (times[i-1] + times[i]) + times[i];
             }   
-            if(clearTime > limit) return limit+ 1;
+            if(clearTime > limit) return Long.MAX_VALUE;
         }
         return clearTime;
     }
