@@ -4,7 +4,7 @@ class Solution {
         long answer = limit;//해결가능한 경우만 입력으로 주어짐
         
         long left =1;
-        long right = limit;
+        long right = 100_000;
         
         while(left <= right){
             
