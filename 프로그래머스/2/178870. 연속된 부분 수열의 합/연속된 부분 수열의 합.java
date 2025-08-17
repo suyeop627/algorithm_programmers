@@ -9,10 +9,6 @@ class Solution {
             subSums[i] = sequence[i] + subSums[i - 1];
         }
 
-        if (sequence[0] == k) {
-            return new int[]{0, 0};
-        }
-
         int start = 0, end = 0;
         int minLength = Integer.MAX_VALUE;
         
