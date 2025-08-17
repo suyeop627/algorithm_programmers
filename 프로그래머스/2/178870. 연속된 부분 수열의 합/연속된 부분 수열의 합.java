@@ -17,7 +17,8 @@ class Solution {
 
             if (subSum == k) {
                 int length = end - start + 1;
-                if (minLength > length || (minLength == length && answer[0] > start)) {
+                // if (minLength > length || (minLength == length && answer[0] > start)) {
+                if (minLength > length) {
                     answer[0] = start;
                     answer[1] = end;
                     minLength = length;
@@ -25,7 +26,7 @@ class Solution {
                 start++;
             } else if (subSum < k) {
                 end++;
-            } else {
+            } else { //subSum > k
                 start++;
             }
         }
