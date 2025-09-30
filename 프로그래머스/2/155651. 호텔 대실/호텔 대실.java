@@ -1,6 +1,7 @@
 import java.time.LocalTime;
 import java.util.*;
 
+
 class Solution {
     public int solution(String[][] book_time) {
         List<Booking> bookings = new ArrayList<>();
@@ -13,15 +14,15 @@ class Solution {
 
         //우선순위가 높은 요소가 먼저 나가는 큐
         // - 우선순위 : compareTo 혹은 Comparator로 정해지는 정렬 순서에서 더 앞서는 객체
-        //PriorityQueue<LocalTime> roomCleaningEndTimes = new PriorityQueue<>(LocalTime::compareTo);
+        //PriorityQueue<LocalTime> roomCleaningEndTimes = new PriorityQueue<>(LocalTime::compareTo); - 불필요함
         PriorityQueue<LocalTime> roomCleaningEndTimes = new PriorityQueue<>();
 
         int maxRooms = 0;
-
+        
         for (Booking booking : bookings) {
             removeRoomsReady(booking, roomCleaningEndTimes);
 
-            LocalTime roomCleaningEndtime = getRoomCleaningEndtime(booking);
+            LocalTime roomCleaningEndtime = booking.endTime.plusMinutes(10);
             roomCleaningEndTimes.add(roomCleaningEndtime);
 
             maxRooms = Math.max(maxRooms, roomCleaningEndTimes.size());
@@ -37,17 +38,8 @@ class Solution {
         }
     }
 
-    private LocalTime getRoomCleaningEndtime(Booking booking) {
-        LocalTime bookingEndTime = booking.endTime;
-        //예약 종료시간 + 청소시간이 자정 넘어가서 실패함 -> 자정 직전으로 지정
-        if (!bookingEndTime.isBefore(LocalTime.of(23, 50))) {
-            return LocalTime.of(23, 59);
-        }
-
-        return bookingEndTime.plusMinutes(10);
-    }
-
     static class Booking {
+        
         LocalTime startTime;
         LocalTime endTime;
 
