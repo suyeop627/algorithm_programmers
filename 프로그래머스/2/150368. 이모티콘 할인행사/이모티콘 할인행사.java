@@ -8,7 +8,8 @@ class Solution {
         return new int[]{maxSubscriber, maxSales};
     }
 
-    private void dfs(int depth, int[] appliedDiscounts, int[][] users, int[] emoticons) {
+    private void dfs(int depth, int[] appliedDiscounts, 
+                     int[][] users, int[] emoticons) {
         if (depth == emoticons.length) {
             evaluate(users, emoticons, appliedDiscounts);
             return;
@@ -20,7 +21,8 @@ class Solution {
         }
     }
 
-    private void evaluate(int[][] users, int[] emoticons, int[] appliedDiscounts) {
+    private void evaluate(int[][] users, int[] emoticons, 
+                          int[] appliedDiscounts) {
         int subscriberCount = 0;
         int totalSales = 0;
 
