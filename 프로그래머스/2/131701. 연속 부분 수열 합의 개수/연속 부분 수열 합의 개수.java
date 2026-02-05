@@ -4,7 +4,7 @@ import java.util.Set;
 class Solution {
     public int solution(int[] elements) {
         int n = elements.length;
-
+            
         int[] doubledArr = new int[n*2];
         for (int i=0; i <n; i++) {
             doubledArr[i] = elements[i];
@@ -20,7 +20,7 @@ class Solution {
                 subSum += doubledArr[i];
             }
             sums.add(subSum);
-
+            
             for (int start = 1; start < n; start++) {
                 subSum -= doubledArr[start-1];
                 subSum += doubledArr[start +subLength - 1];
