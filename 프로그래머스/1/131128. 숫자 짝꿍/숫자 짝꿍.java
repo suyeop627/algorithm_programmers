@@ -4,7 +4,7 @@ class Solution {
         
         int[] xArr = new int[10];
         int[] yArr = new int[10];
-        
+
         Arrays.stream(X.split(""))
             .forEach(x -> xArr[Integer.parseInt(x)]++);
         Arrays.stream(Y.split(""))
