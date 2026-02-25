@@ -23,13 +23,14 @@ class Solution {
         increaseAnswerIfRegistable(itemToNumber, toPurchase);
         
         for(int i =10; i < discount.length; i++){
+            String currentKey = discount[i-10];
             
-            if(itemToNumber.containsKey(discount[i-10])){
-                int countAfterReduction = itemToNumber.get(discount[i-10]) -1;
+            if(itemToNumber.containsKey(currentKey)){
+                int countAfterReduction = itemToNumber.get(currentKey) -1;
                 if(countAfterReduction > 0){
-                    itemToNumber.put(discount[i-10], countAfterReduction);    
+                    itemToNumber.put(currentKey, countAfterReduction);    
                 }else{
-                    itemToNumber.remove(discount[i-10]);
+                    itemToNumber.remove(currentKey);
                 }
             }
 
