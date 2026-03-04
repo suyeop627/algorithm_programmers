@@ -4,22 +4,18 @@ class Solution {
         int answer = 0;
         
         while(true){
-            int[] capture = Arrays.copyOf(arr, arr.length);
-            boolean isEqual = true;
+            boolean changed = false;
             for(int i = 0; i < arr.length; i++){
                 if(arr[i] >= 50 && arr[i] % 2 ==0){
                     arr[i] /=2;
-                }
-                if(arr[i] < 50 && arr[i]%2 == 1){
+                    changed = true;
+                }else if(arr[i] < 50 && arr[i]%2 == 1){
                     arr[i]*=2;
                     arr[i]++;
-                }
-                
-                if(capture[i] != arr[i]){
-                    isEqual = false;
+                    changed = true;
                 }
             }
-            if(isEqual){
+            if(!changed){
                 break;
             }
             answer++;
