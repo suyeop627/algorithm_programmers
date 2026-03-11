@@ -2,8 +2,7 @@ import java.util.*;
 class Solution {
     public int solution(int n, int k) {
         int answer = 0;
-        String kJinsu = toKJinsu(n,k);
-        String[] arr = toKJinsu(n,k).split("0");
+        String[] arr = Integer.toString(n,k).split("0");
         
         for(String s : arr){
              if(s.length() > 0 
@@ -20,14 +19,5 @@ class Solution {
             if(n %i ==0) return false;
         }
         return true;
-    }
-    
-    private String toKJinsu(int number, int k){
-        StringBuilder sb = new StringBuilder();
-        while(number > 0){
-            sb.insert(0, number%k);
-            number/=k;
-        }
-        return sb.toString();
     }
 }
